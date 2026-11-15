@@ -13,7 +13,7 @@ export const CATEGORIES = [
     }, 
     { 
         type: "tenshin",
-        word : "天心"
+        word : "点心"
     }, 
     { 
         type: "drink", 
