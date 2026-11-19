@@ -88,12 +88,12 @@ function editItemInfo(appData, itemId, updatedInfo){
 
     let tempUpdatedItem = {
         ...item,
-        name: name,
+        name: name.trim(),
         storageId: storageId,
         category: category,
         expectedQuantity: convertedExpectedQuantity,
         replenishmentMethod: replenishmentMethod,
-        storageUnit: storageUnit
+        storageUnit: storageUnit.trim()
     };
 
     let updatedItem = {};
