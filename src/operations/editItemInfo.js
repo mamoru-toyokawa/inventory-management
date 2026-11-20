@@ -30,7 +30,12 @@ function editItemInfo(appData, itemId, updatedInfo){
         result.error.push("TOO_MANY_LETTERS_NAME");
     }
 
-    const isDuplicate = appData.items.some(item => item.name.trim().normalize("NFKC") === normalizedName);
+    const isDuplicate = 
+        appData.items.some(item => 
+            item.name.trim().normalize("NFKC") === normalizedName
+            &&
+            item.id !== itemId
+        );
 
     if(isDuplicate){
         result.error.push("DUPLICATE_NAME");
