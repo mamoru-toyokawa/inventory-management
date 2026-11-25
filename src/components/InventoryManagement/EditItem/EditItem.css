@@ -1,0 +1,77 @@
+.edit-item-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+
+    min-height:0;
+}
+
+.edit-item-section > .back-to-previous-button {
+    display: block;
+}
+
+.backdrop-container.edit-backdrop {
+    z-index: 1100;
+}
+
+.edit-item-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 0;
+
+    width: 100%;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.edit-item-form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.edit-item-form > div > label {
+    text-align: center;
+    width: 100%;
+}
+
+.replenishment-method-field {
+    white-space: nowrap;
+}
+
+/* confirmation modal */
+.edit-confirmation {
+    width: 40dvw;
+}
+
+.edit-confirmation p {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.edit-confirmation > .buttons {
+    flex-direction: column;
+    gap: 30px;
+
+    margin: 40px 0 20px 0;
+}
+
+.has-err {
+    border: 2px solid red;
+}
+
+@media (max-width: 480px){
+    .edit-item-form  .form-input,
+    .edit-item-form  .selection, 
+    .edit-item-form  .replenishment-method-field {
+        width: 90%;
+    }
+}
