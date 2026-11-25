@@ -23,43 +23,6 @@
     width: 100%;
 }
 
-/* confirmation section */
-.confirmation-modal {
-    position: fixed;
-    inset: 50% 0 0 50%;
-    z-index: 1000;
-
-    background-color: #fff;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    min-width: min-content;
-    width: 50vw;
-    min-height: min-content;
-    height: 50vh;
-    border-radius: 20px;
-
-    padding: 30px 30px 0 30px;
-
-    transform: translate(-50%, calc(-50% + 100%));
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    transition: transform 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.confirmation-modal.is-open {
-    /*Open state */
-    transform: translate(-50%, -50%);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
 .confirmation-section {
     display: flex;
     flex-direction: column;
