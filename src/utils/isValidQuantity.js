@@ -1,7 +1,7 @@
 export function isValidQuantity(input){
 // input is expected to be string //
 
-const quantityPattern =  /^\d+(\.\d)?$/;
+const quantityPattern =  /^\d+(\.\d)?$/; // it's supposed to accept numbers with at most one decimal place. //
 
 if(typeof input !== "string" || !quantityPattern.test(input) ){
     return false;
