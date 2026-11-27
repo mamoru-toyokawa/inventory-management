@@ -157,7 +157,7 @@
 
 .exit {
     position: absolute;
-    top: 0.5%;
+    top: 0.2%;
     right: 2.5%;
 
     border: none;
@@ -175,27 +175,10 @@
     background-color: var(--color-primary);
 }
 
-.invalid-error-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    min-height: 0;
-}
-
-.invalid-error-container > .second-line{
-    align-self: center;
-}
-
 @media (max-width: 480px){
     .item-interaction{
         width: 90vw;
         min-width: min-content;
-    }
-
-    .invalid-error-container{
-        flex-direction: column;
     }
 
     .quantity {

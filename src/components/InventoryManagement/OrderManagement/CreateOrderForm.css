@@ -40,6 +40,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    gap: 30px;
 
     width: 100%;
     min-width: min-content;
@@ -54,7 +55,7 @@
     min-width: min-content;
 }
 
-.new-quantity > div{
+.quantity-input-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,9 +66,9 @@
 }
 
 .new-quantity .form-input {
-    flex: 1 1 0;
-    min-width: min-content;
-    max-width: 5rem;
+    flex: 1 1 max-content;
+
+    min-width: 5rem;
 }
 
 .new-quantity label {
@@ -75,19 +76,22 @@
 }
 
 .quantity-and-unit {
-    flex-grow: 1;
+    justify-content: center;
+    flex: 1 1 min-content;
 }
 
-.new-quantity.error-message {
-    width: 100%;
+/* Error message styling */
+.invalid-error-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.new-quantity p {
-    margin: 0;
-}
-
-.invalid-error-container .error-message {
+.invalid-error-container span {
     white-space: nowrap;
+
+    margin: 0;
 }
 
 .close-create-order-button {
@@ -107,9 +111,6 @@
     background-color: var(--color-button-disabled);
 }
 
-.create-order-button{
-    margin:20px 0 20px 0;
-}
 
 @media (max-width: 480px){
     .create-order-panel{
