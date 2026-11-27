@@ -54,21 +54,12 @@ function PendingOrdersManagement ({ selectedItem, setDeeperSection }){
             </div>
             
             {/*More Detailed Modals below*/}
-
-            {anyDetailModal === "create" && (
-                <div
-                    className="create-order-backdrop"
-                    onClick={() => setAnyDetailModal(null)}
-                />
-            )}
-
-            {anyDetailModal === "create" && (
-                    <CreateOrderForm
-                        storageUnit={storageUnit}
-                        setAnyDetailModal={setAnyDetailModal}
-                        selectedItem={selectedItem}
-                    />
-                )}
+            <CreateOrderForm
+                storageUnit={storageUnit}
+                anyDetailModal={anyDetailModal}
+                setAnyDetailModal={setAnyDetailModal}
+                selectedItem={selectedItem}
+            />
         </section>
     )
 }

@@ -1,8 +1,7 @@
 .create-order-panel {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    z-index: 1000;
+    position: fixed;
+    inset: 50% 0 0 50%;
+    z-index: 1200;
     background-color: var(--color-background);
 
     display: flex;
@@ -12,8 +11,23 @@
     gap: 20px;
 
     width: 50%;
-    min-height: 0;
+    min-width: min-content;
+    min-height: min-content;
     border-radius: 20px;
+
+    transform: translate(-50%, calc(-50% + 100%));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: transform 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.create-order-panel.is-open {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;    
 }
 
 .create-order-panel h5 {
@@ -26,28 +40,57 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    gap: 30px;
+
     width: 100%;
+    min-width: min-content;
 }
 
 .new-order-form button:disabled {
     background-color: var(--color-button-disabled);
 }
 
+.new-quantity {
+    width: 50%;
+    min-width: min-content;
+}
 
-.new-quantity > div{
+.quantity-input-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex: 1 1 0;
     gap: 8px;
 }
 
-.new-quantity.error-message {
-    width: 100%;
+.new-quantity .form-input {
+    flex: 1 1 max-content;
+
+    min-width: 5rem;
 }
 
-.new-quantity p {
+.new-quantity label {
+    white-space: nowrap;
+}
+
+.quantity-and-unit {
+    justify-content: center;
+    flex: 1 1 min-content;
+}
+
+/* Error message styling */
+.invalid-error-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.invalid-error-container span {
+    white-space: nowrap;
+
     margin: 0;
 }
 
@@ -68,15 +111,10 @@
     background-color: var(--color-button-disabled);
 }
 
-.create-order-button{
-    margin:20px 0 20px 0;
-}
 
 @media (max-width: 480px){
     .create-order-panel{
-        left: 10%;
-
         width: 80%;
+        min-width: min-content;
     }  
-
 }
