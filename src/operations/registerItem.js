@@ -72,13 +72,13 @@ function registerItem (appData, itemData) {
 
     let newItem = {
         id: crypto.randomUUID(),
-        name: name,
+        name: name.trim(),
         storageId: storageId,
         quantity: 0,
         expectedQuantity: convertedExpectedQuantity,
         replenishmentMethod: replenishmentMethod,
         category: category,
-        storageUnit: storageUnit,
+        storageUnit: storageUnit.trim(),
     }
 
     if(replenishmentMethod === "ORDER"){

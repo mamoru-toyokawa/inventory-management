@@ -3,8 +3,11 @@ import { useState } from "react";
 import createOrder from "../../../operations/createOrder";
 import "./CreateOrderForm.css"
 import { isValidQuantity } from "../../../utils/isValidQuantity";
+import { createPortal } from "react-dom";
+import { useInventoryNavigation } from "../../../context/useInventoryNavigation";
 
-function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
+function CreateOrderForm ({ storageUnit, selectedItem }){
+    const {anyDetailModal, setAnyDetailModal} = useInventoryNavigation(); 
     const [userInput, setUserInput] = useState("1");
     const [errorMsg, setErrorMsg] = useState("");
     const { appData, setAppData } = useAppData();
@@ -46,8 +49,17 @@ function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
         setAnyDetailModal(null);
     }
 
-    return (
-        <div className="create-order-panel">
+    return createPortal(
+        <>
+        {anyDetailModal === "create" && (
+            <div
+                className="backdrop-container"
+                onClick={() => setAnyDetailModal(null)}
+            />        
+        )}
+
+
+        <div className={`create-order-panel ${anyDetailModal === "create" ? "is-open" : ""}`}>
             <h5>新規注文</h5>
 
             <form 
@@ -56,7 +68,7 @@ function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
                 noValidate
             >
                 <div className="new-quantity">
-                    <div>
+                    <div className="quantity-input-container">
                         <label htmlFor="order-quantity">数量:</label>
                         <div className="quantity-and-unit">
                         <input
@@ -65,7 +77,7 @@ function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
                             max="100"
                             step="1"
                             id="order-quantity"
-                            className="form-input"
+                            className="form-input "
                             value={userInput}
                             required
                             onChange={e => handleChange(e)}
@@ -76,8 +88,9 @@ function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
 
                     {isDisabled && (
                         <div className="invalid-error-container">
-                        <span className="error-message first-line">有効な数字(1~100、小数点第1位まで)</span>
-                        <span className="error-message second-line">を入力して下さい。</span>
+                        <span className="error-message first-line">有効な数字</span>
+                        <span className="error-message second-line">(1~100、小数点第1位まで)</span>
+                        <span className="error-message third-line">を入力して下さい。</span>
                         </div>
                     )}
 
@@ -101,7 +114,9 @@ function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
                 }}
             >✕
             </button>
-        </div>
+        </div>     
+    </>,
+        document.body
     )
 }
 

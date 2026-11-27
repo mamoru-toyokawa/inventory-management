@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import adjustInventory from "../../operations/adjustInventory";
 import PendingOrdersManagement from "./OrderManagement/PendingOrdersManagement";
 import InventoryHistoryView from "./HistoryManagement/InventoryHistoryView";
+import EditItem from "./EditItem/EditItem";
 import calUpcomingQuantity from "../../utils/calUpcomingQuan";
 import "./ItemInteraction.css"
 import { useInventoryNavigation } from "../../context/useInventoryNavigation";
 import { isValidQuantity } from "../../utils/isValidQuantity";
-import { MoveLeft, MoveRight } from "lucide-react";
+import { MoveLeft, MoveRight, Settings } from "lucide-react";
 
 function ItemInteraction ({ selectedItem, inventoryView, setInventoryView }){
     const { appData, setAppData } = useAppData();
@@ -199,11 +200,27 @@ function ItemInteraction ({ selectedItem, inventoryView, setInventoryView }){
                     />
                 )}
 
+                {deeperSection === "edit" && (
+                    <EditItem 
+                        selectedItem={selectedItem}
+                    />
+                )}
+
                 <button
                     type="button"
                     className="exit"
                     onClick={closeAllPanels}>✕
                 </button> 
+
+                <button
+                    type="button"
+                    className="edit"
+                    onClick={() => {setDeeperSection(prev => 
+                        prev !== "edit" ? "edit" : null
+                    )}}
+                >
+                    <Settings size={25}/>
+                </button>
             </div>
         </section>
     )

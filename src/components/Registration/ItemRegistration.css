@@ -38,18 +38,6 @@
     margin-bottom: 40px;
 }   
 
-.item-registration-form input,
-.item-registration-form select {
-    border: none;
-    border-radius: 10px;
-    background-color: var(--color-input);
-
-    padding: 10px;
-    width: 50%;
-    
-    font-size: 1.4rem;
-}
-
 .item-registration-form input:focus,
 .item-registration-form select:focus {
     outline: none;
@@ -67,49 +55,20 @@
     justify-content: space-between;
     align-items: center;
 
-    width: 50%;
+    width: 60%;
 }
 
 .quantity-with-unit input[type="number"] {
     flex: 1;
 }
 
-/* radio buttons */
-.replenishment-method-field {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 80px;
-    padding: 10px 0;
-
-    background-color: var(--color-input);
-
-    border: none;
-    border-radius: 10px;
-}
-
-.replenishment-method-field > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
-
-    margin-bottom: 0;
-}
-
 .replenishment-method-field label {
+    white-space: nowrap;
+
     width: auto;
     margin: 0;
 }
 
-.replenishment-method-field input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-    padding: 0;
-    flex-shrink: 0;
-}
 
 .item-registration-form button {
     padding: 10px 15px;
