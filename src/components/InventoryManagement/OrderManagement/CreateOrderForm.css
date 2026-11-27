@@ -1,8 +1,7 @@
 .create-order-panel {
     position: fixed;
-    top: 30%;
-    left: 25%;
-    z-index: 1000;
+    inset: 50% 0 0 50%;
+    z-index: 1200;
     background-color: var(--color-background);
 
     display: flex;
@@ -12,8 +11,23 @@
     gap: 20px;
 
     width: 50%;
-    min-height: 0;
+    min-width: min-content;
+    min-height: min-content;
     border-radius: 20px;
+
+    transform: translate(-50%, calc(-50% + 100%));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: transform 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.create-order-panel.is-open {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;    
 }
 
 .create-order-panel h5 {
@@ -26,21 +40,42 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+
     width: 100%;
+    min-width: min-content;
 }
 
 .new-order-form button:disabled {
     background-color: var(--color-button-disabled);
 }
 
+.new-quantity {
+    width: 50%;
+    min-width: min-content;
+}
 
 .new-quantity > div{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex: 1 1 0;
     gap: 8px;
+}
+
+.new-quantity .form-input {
+    flex: 1 1 0;
+    min-width: min-content;
+    max-width: 5rem;
+}
+
+.new-quantity label {
+    white-space: nowrap;
+}
+
+.quantity-and-unit {
+    flex-grow: 1;
 }
 
 .new-quantity.error-message {
@@ -49,6 +84,10 @@
 
 .new-quantity p {
     margin: 0;
+}
+
+.invalid-error-container .error-message {
+    white-space: nowrap;
 }
 
 .close-create-order-button {
@@ -74,9 +113,7 @@
 
 @media (max-width: 480px){
     .create-order-panel{
-        left: 10%;
-
         width: 80%;
+        min-width: min-content;
     }  
-
 }

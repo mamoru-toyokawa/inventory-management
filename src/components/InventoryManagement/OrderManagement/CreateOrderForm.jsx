@@ -3,8 +3,11 @@ import { useState } from "react";
 import createOrder from "../../../operations/createOrder";
 import "./CreateOrderForm.css"
 import { isValidQuantity } from "../../../utils/isValidQuantity";
+import { createPortal } from "react-dom";
+import { useInventoryNavigation } from "../../../context/useInventoryNavigation";
 
-function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
+function CreateOrderForm ({ storageUnit, selectedItem }){
+    const {anyDetailModal, setAnyDetailModal} = useInventoryNavigation(); 
     const [userInput, setUserInput] = useState("1");
     const [errorMsg, setErrorMsg] = useState("");
     const { appData, setAppData } = useAppData();
@@ -46,8 +49,17 @@ function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
         setAnyDetailModal(null);
     }
 
-    return (
-        <div className="create-order-panel">
+    return createPortal(
+        <>
+        {anyDetailModal === "create" && (
+            <div
+                className="backdrop-container"
+                onClick={() => setAnyDetailModal(null)}
+            />        
+        )}
+
+
+        <div className={`create-order-panel ${anyDetailModal === "create" ? "is-open" : ""}`}>
             <h5>新規注文</h5>
 
             <form 
@@ -101,7 +113,9 @@ function CreateOrderForm ({ storageUnit, setAnyDetailModal, selectedItem }){
                 }}
             >✕
             </button>
-        </div>
+        </div>     
+    </>,
+        document.body
     )
 }
 
