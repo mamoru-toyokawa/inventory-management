@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useAppData } from "../../context/useAppData";
 import { useState } from "react";
 import "./StorageRegistration.css"
-import { ArrowBigLeft, Home } from "lucide-react";
+import { ArrowBigLeft } from "lucide-react";
 
 function StorageRegistration (){
     const [userInput, setUserInput] = useState({
